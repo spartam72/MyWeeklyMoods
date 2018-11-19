@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#40ff99"
+    android:orientation="vertical">
+
+
+    <ImageButton
+        android:id="@+id/note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/acceuil"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/acceuil"
+        android:layout_marginBottom="31dp"
+        android:layout_marginLeft="13dp"
+        android:background="#40ff99"
+        app:srcCompat="@drawable/note"
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription,HardcodedText,UnknownId"
+        android:layout_marginStart="13dp" />
+
+    <ImageButton
+        android:id="@+id/historic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/note"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:background="#40ff99"
+        app:srcCompat="@drawable/historic" />
+
+    <ImageView
+        android:id="@+id/happy_mood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="74dp"
+        app:srcCompat="@drawable/happy_mood" />
+
+</RelativeLayout>
