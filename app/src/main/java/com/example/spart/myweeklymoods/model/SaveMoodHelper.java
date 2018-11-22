@@ -33,7 +33,9 @@ public class SaveMoodHelper {
     public void SaveCurrentMood(Moods currentMood) {
         currentMood.setDate( getCurrentDate() );
         Prefs prefs = Prefs.get( context );
+
         ArrayList<Moods> prefsMoods = prefs.stringToMoods();
+
         if (prefsMoods == null) {
             prefsMoods = new ArrayList<>();
         }
@@ -57,6 +59,8 @@ public class SaveMoodHelper {
         Prefs prefs = Prefs.get(context);
 
         ArrayList<Moods> userLastChoice = prefs.loadUserMoods();
+        ArrayList<Moods> emptyArray = new ArrayList<>( 0 );
+
 
         if (userLastChoice.size() == 0) {
             userLastChoice = new ArrayList<>();
@@ -69,8 +73,12 @@ public class SaveMoodHelper {
             userLastChoice.remove( 0 );
         }
         prefs.saveUserMoods( userLastChoice );
-        }
+        prefs.MoodsToString( emptyArray );
     }
+}
+
+
+
 
 
 

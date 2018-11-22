@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(
                         MainActivity.this, MyHistoric.class );
                 //if historical don't exist, toast show "You have no history"
-                if (Prefs.get( getBaseContext() ).stringToMoods().size() == 0) {
+                if (Prefs.get( getBaseContext() ).loadUserMoods().size() == 0) {
                     Toast.makeText( getBaseContext(), "Vous n'avez pas encore d'historique", Toast.LENGTH_SHORT ).show();
                 }
                 startActivity( intent );
