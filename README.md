@@ -7,4 +7,4 @@ The history is spread over a week and will display in addition to the color corr
 By clicking on this icon you can read your note which will appear as a toast.
 If you have not written anything, no icon will appear. 
 
-Translated with www.DeepL.com/Translator
+
