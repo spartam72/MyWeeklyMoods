@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import com.example.spart.myweeklymoods.R;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -65,7 +67,10 @@ public class SaveMoodHelper {
         if (userLastChoice.size() == 0) {
             userLastChoice = new ArrayList<>();
         }
-        if (prefs.stringToMoods().size() > 0  ){
+        if (prefs.stringToMoods().size() == 0) {
+            Moods defautMood = new Moods(R.drawable.happy_mood,R.color.colorGreen,3,"",getCurrentDate(),R.raw.blackberrysms);
+            userLastChoice.add( defautMood );
+        }else {
             Moods lastMoodOfTheDay = prefs.stringToMoods().get( prefs.stringToMoods().size() - 1);
             userLastChoice.add( lastMoodOfTheDay );
         }
