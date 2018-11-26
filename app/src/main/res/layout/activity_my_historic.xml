@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MyHistoric">
+    tools:context=".MyHistoric">
 
     <LinearLayout
         android:id="@+id/historic_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/black"
+        android:background="#cdcdcc"
         android:orientation="vertical">
 
         <LinearLayout
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/black"
+            android:background="#cdcdcc"
             android:orientation="horizontal">
 
             <TextView
@@ -26,7 +26,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 android:text="il y a une semaine"
                 android:textColor="@android:color/background_dark"
                 android:textSize="12sp"
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 app:srcCompat="@drawable/ic_comment_black_48px" />
 
         </LinearLayout>
@@ -49,7 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/black"
+            android:background="#cdcdcc"
             android:orientation="horizontal">
 
             <TextView
@@ -57,12 +57,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 android:text="il y a 6 jours"
                 android:textColor="@android:color/background_dark"
                 android:textSize="12sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/showComment6"
@@ -70,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 app:srcCompat="@drawable/ic_comment_black_48px" />
 
         </LinearLayout>
@@ -80,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/black"
+            android:background="#cdcdcc"
             android:orientation="horizontal">
 
             <TextView
@@ -88,12 +87,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 android:text="il y a 5 jours"
                 android:textColor="@android:color/background_dark"
                 android:textSize="12sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/showComment5"
@@ -101,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 app:srcCompat="@drawable/ic_comment_black_48px" />
 
         </LinearLayout>
@@ -111,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/black"
+            android:background="#cdcdcc"
             android:orientation="horizontal">
 
             <TextView
@@ -119,12 +117,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 android:text="il y a 4 jours"
                 android:textColor="@android:color/background_dark"
                 android:textSize="12sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/showComment4"
@@ -132,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 app:srcCompat="@drawable/ic_comment_black_48px" />
 
         </LinearLayout>
@@ -142,7 +139,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/black"
+            android:background="#cdcdcc"
             android:orientation="horizontal">
 
             <TextView
@@ -150,12 +147,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 android:text="il y a 3 jours"
                 android:textColor="@android:color/background_dark"
                 android:textSize="12sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/showComment3"
@@ -163,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 app:srcCompat="@drawable/ic_comment_black_48px" />
 
         </LinearLayout>
@@ -173,7 +169,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/black"
+            android:background="#cdcdcc"
             android:orientation="horizontal">
 
             <TextView
@@ -181,12 +177,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 android:text="avant-hier"
                 android:textColor="@android:color/background_dark"
                 android:textSize="12sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/showComment2"
@@ -194,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 app:srcCompat="@drawable/ic_comment_black_48px"
                 tools:ignore="ContentDescription" />
 
@@ -205,7 +200,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@android:color/black"
+            android:background="#cdcdcc"
             android:orientation="horizontal">
 
             <TextView
@@ -213,12 +208,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 android:text="hier"
                 android:textColor="@android:color/background_dark"
                 android:textSize="12sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/showComment1"
@@ -226,7 +220,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_weight="1"
-                android:background="@android:color/black"
+                android:background="#cdcdcc"
                 app:srcCompat="@drawable/ic_comment_black_48px" />
 
         </LinearLayout>
