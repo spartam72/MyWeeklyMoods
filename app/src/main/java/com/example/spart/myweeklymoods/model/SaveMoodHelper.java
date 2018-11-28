@@ -48,7 +48,6 @@ public class SaveMoodHelper {
 
         if (prefsMoods.size() > 8) {
             prefsMoods.remove( 0 );
-            System.out.println( prefsMoods.size() );
         }
 
         prefs.MoodsToString( prefsMoods );
@@ -60,6 +59,7 @@ public class SaveMoodHelper {
 
         Prefs prefs = Prefs.get(context);
 
+        //I create two Arraylists, one that contains the last mood of the day and the other that is always empty
         ArrayList<Moods> userLastChoice = prefs.loadUserMoods();
         ArrayList<Moods> emptyArray = new ArrayList<>( 0 );
 
@@ -67,17 +67,21 @@ public class SaveMoodHelper {
         if (userLastChoice.size() == 0) {
             userLastChoice = new ArrayList<>();
         }
+        //if the user has not chosen a mood, the default mood is automatically saved
         if (prefs.stringToMoods().size() == 0) {
             Moods defautMood = new Moods(R.drawable.happy_mood,R.color.colorGreen,3,"",getCurrentDate(),R.raw.blackberrysms);
             userLastChoice.add( defautMood );
         }else {
+            //otherwise we display the last one of the day
             Moods lastMoodOfTheDay = prefs.stringToMoods().get( prefs.stringToMoods().size() - 1);
             userLastChoice.add( lastMoodOfTheDay );
         }
+        //if the size exceeds seven, the first one is deleted
         if(userLastChoice.size() >7){
             userLastChoice.remove( 0 );
         }
         prefs.saveUserMoods( userLastChoice );
+        //here we empty MoodToString, which allows to display the default mood  at midnight
         prefs.MoodsToString( emptyArray );
     }
 }

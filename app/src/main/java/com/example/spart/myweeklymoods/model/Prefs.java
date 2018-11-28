@@ -61,6 +61,7 @@ public class Prefs {
         return userMoods;
 
     }
+    //saveUserMoods changes ArrayList into json strings and save it,we use it for the history
     public  void saveUserMoods(ArrayList<Moods>historicMoods) {
         //start writing (open the file)
         SharedPreferences.Editor editor = prefs.edit();
@@ -71,6 +72,7 @@ public class Prefs {
         //close the file
         editor.apply();
     }
+    //loadUserMoods recovers json strings and return there in ArrayList,we use it for the history
     public  ArrayList<Moods> loadUserMoods() {
         Gson gson = new Gson();
         String json = prefs.getString(userhHistoric, "");

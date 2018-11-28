@@ -1,7 +1,7 @@
 package com.example.spart.myweeklymoods.model;
 
 import java.util.Date;
-
+//creating the moods
 public class Moods {
 
     private int image;
@@ -11,6 +11,7 @@ public class Moods {
     private Date date;
     private int sound;
 
+    //Moods constructor
     public Moods(int image, int background, int number,String comment, Date date,int sound){
         this.image = image;
         this.Background = background;
@@ -20,6 +21,7 @@ public class Moods {
         this.sound = sound;
 
     }
+    //ghetters and setters
     public void setDate(Date date) {
         this.date = date;
     }
@@ -41,8 +43,6 @@ public class Moods {
     public void setNumber(int number) { this.number = number; }
 
     public int getSound() { return sound; }
-
-    public void setSound(int sound) { this.sound = sound; }
 
 }
 

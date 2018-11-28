@@ -35,6 +35,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    //attributes statement
     private MediaPlayer vlc;
     private ImageButton note;
     private ImageButton historic;
@@ -55,16 +56,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
 
+        //indice corresponds to the position of the mood in the moodTab Arraylist(in createMoodTab method)
+        indice = 1;
         prefs = Prefs.get( getBaseContext() );
         mSaveMoodHelper = new SaveMoodHelper(this);
+        //methods called when the application starts
         createMoodsTab();
         AlarmMidnight();
 
 
 
+        //if stringToMoods(which contains the moods recorded during the day by the user) is empty,we display default Mood(happy Mood)
         if (prefs.stringToMoods().size() == 0) {
 
             indice = 1;
+            //otherwise the last recorded mood is displayed
         } else {
             int numMood = prefs.stringToMoods().get( prefs.stringToMoods().size() - 1 ).getNumber();
             int i = 0;
@@ -84,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
         displayDifferentsMoods();
 
+        //if note button is clicked,we display a customized dialog box
         note.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } );
 
+        //if historic button is clicked,MyHistoric activity starts
         historic.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //At midnight, the alarm goes off to save the last mood of the day
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void AlarmMidnight() {
 
@@ -147,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //creation of my customized dialog box
     public class CustomPopup extends Dialog {
 
         private EditText writeComment;
@@ -169,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             } );
 
+            //this allows to save the chosen mood and a comment
             valider.setOnClickListener( new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -189,6 +200,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+    //creation of a Arraylist to store the differents moods
     private ArrayList<Moods> moodTab;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -207,6 +219,7 @@ public class MainActivity extends AppCompatActivity {
         moodTab.add( mood4 );
         moodTab.add( mood5 );
     }
+    //According to its position in the arraylist, the image and color as well as the sound corresponding to the mood are displayed.
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void displayDifferentsMoods (){
         if ((indice >= 0) && (indice < moodTab.size())) {
@@ -217,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
             playSound( moodTab.get(indice).getSound() );
         }
     }
+    //allows you to play a sound
     public void playSound(int resId){
 
         if(vlc != null) {
@@ -226,14 +240,7 @@ public class MainActivity extends AppCompatActivity {
         vlc = MediaPlayer.create(this, resId);
         vlc.start();
     }
-    public  Date yesterday(){
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date(System.currentTimeMillis()));
-        calendar.add(Calendar.DATE, -1);
-        Date hier = calendar.getTime();
-        return hier;
-    }
     @Override
     protected void onRestart() { super.onRestart(); }
 
@@ -298,6 +305,7 @@ public class MainActivity extends AppCompatActivity {
         public void onLongPress(MotionEvent e) {
         }
 
+        //this method is the Swipe that will manage the display when going from top to bottom or bottom to top
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public boolean onFling(MotionEvent start, MotionEvent finish, float xVelocity, float yVelocity) {

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MyHistoric extends AppCompatActivity {
 
-    //DECLARATION OF ATTRIBUTES
+    //attributes statement
     private LinearLayout linearLayout7;
     private LinearLayout linearLayout6;
     private LinearLayout linearLayout5;
@@ -49,7 +49,7 @@ public class MyHistoric extends AppCompatActivity {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_my_historic );
 
-        //DECLARATION OF ID
+        //id statement
         linearLayout7 = findViewById( R.id.layout7 );
         linearLayout6 = findViewById( R.id.layout6 );
         linearLayout5 = findViewById( R.id.layout5 );
@@ -72,25 +72,19 @@ public class MyHistoric extends AppCompatActivity {
         textView6 = findViewById( R.id.textView6 );
         textView7 = findViewById( R.id.textView7 );
 
-        //METHOD CALLED
+        //method called
         adjustHistoricMood();
 
     }
-
-    //METHOD THAT CHANGES LINEARLAYOUT AND IMAGEBUTTON COLOR AND WIDHT
-    // AND MAKE IMAGEBUTTON VISIBLE OR NOT ACCORDING MOODS AND COMMENTS AND  SAVEMOODS'SIZE
+    //method to change linearLayout and imageButton color and widht
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public  void adjustHistoricMood() {
 
         if (userPrefs == null) {
             userPrefs = new ArrayList<>();
         }
-        //To don't display current mood
-       /* if (userPrefs.size() > 0) {
-            userPrefs.remove( userPrefs.size() - 1 );
-        }*/
         //if historical don't exist,hide all ImageButtons, toast show "Vous n'avez pas encore d'historique"
-        if (userPrefs.size() <1 ) {
+        if (userPrefs.size() < 1 ) {
 
             imageButton7.setVisibility( View.INVISIBLE );
             imageButton6.setVisibility( View.INVISIBLE );
@@ -169,10 +163,11 @@ public class MyHistoric extends AppCompatActivity {
 
     }
 
+    //this method manages the color and size of the linearLayout but also what to do if the user has written a comment or not
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private  void displayBackgroundAndComment(LinearLayout linearLayout, ImageButton imageButton, TextView textView, final int position) {
 
-
+        //if data is present, the color of the saved mood is displayed
         if ((!userPrefs.isEmpty()) && (userPrefs.size() > position)) {
             linearLayout.setBackground( getResources().getDrawable( userPrefs.get( position ).getBackground() ) );
             imageButton.setBackground( getResources().getDrawable( userPrefs.get( position ).getBackground() ) );
@@ -180,6 +175,7 @@ public class MyHistoric extends AppCompatActivity {
 
             Display display = getWindowManager().getDefaultDisplay();
             int width = 0;
+            //we adjust the size of the linearlayout according to the mood, the more joyful it is, the bigger it is
             if ((!userPrefs.isEmpty()) && (userPrefs.size() > position)) {
                 switch (userPrefs.get( position ).getNumber()) {
                     case (4):
@@ -204,6 +200,7 @@ public class MyHistoric extends AppCompatActivity {
                 linearLayout.setVisibility( View.VISIBLE );
             }
 
+            //if a comment has been recorded when choosing the mood, an icon is displayed that allows the user to reread what he/she has written, by clicking on it
             imageButton.setOnClickListener( new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -216,6 +213,7 @@ public class MyHistoric extends AppCompatActivity {
             } );
 
             String comment = userPrefs.get( position ).getComment();
+            //if the comment does not contain any text, hide the icon ,otherwise it will be displayed.
             if (comment != null) {
 
                 if (userPrefs.get( position ).getComment().equals( "" ))
