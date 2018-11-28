@@ -4,6 +4,7 @@ import java.util.Date;
 //creating the moods
 public class Moods {
 
+    //attributes statement
     private int image;
     private int Background;
     private int number;
