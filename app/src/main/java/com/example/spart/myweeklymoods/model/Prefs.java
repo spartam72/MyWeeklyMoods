@@ -29,7 +29,7 @@ public class Prefs {
             instance = new Prefs(context);
         return instance;
     }
-    //saveUserMoods changes ArrayList into json strings and save it
+    //MoodsToString changes ArrayList into json strings and save it
     public  void MoodsToString(ArrayList<Moods>userMoods) {
         //start writing (open the file)
         SharedPreferences.Editor editor = prefs.edit();
@@ -41,7 +41,7 @@ public class Prefs {
         editor.apply();
     }
 
-    //loadUserMoods recovers json strings and return there in ArrayList
+    //stringToMoods recovers json strings and return there in ArrayList
     public  ArrayList<Moods> stringToMoods() {
         Gson gson = new Gson();
         String json = prefs.getString(historicMoods, "");
