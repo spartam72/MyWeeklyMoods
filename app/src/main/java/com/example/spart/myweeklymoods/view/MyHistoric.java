@@ -191,6 +191,7 @@ public class MyHistoric extends AppCompatActivity {
             }
         }
     }
+    //this method allows to hide all the imageButtons of linearLayouts that do not contain mood
     public void imageButtonVisibility(ImageButton imageButton){
         switch (userPrefs.size()){
             case 0:
