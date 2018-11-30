@@ -221,6 +221,7 @@ public class MyHistoric extends AppCompatActivity {
                 imageButton5.setVisibility( View.INVISIBLE );
                 imageButton6.setVisibility( View.INVISIBLE );
                 imageButton7.setVisibility( View.INVISIBLE );
+                break;
             case 5:
                 imageButton6.setVisibility( View.INVISIBLE );
                 imageButton7.setVisibility( View.INVISIBLE );
