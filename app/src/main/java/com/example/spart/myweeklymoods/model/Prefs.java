@@ -3,6 +3,8 @@ package com.example.spart.myweeklymoods.model;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.example.spart.myweeklymoods.tools.Constant;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
@@ -11,8 +13,7 @@ import java.util.ArrayList;
 public class Prefs {
 
     private static Prefs instance;
-    private static final String historicMoods = "historicMood";
-    private static final String userhHistoric = "userhHistoric ";
+
     private static SharedPreferences prefs;
 
     //Class Prefs constructor
@@ -36,7 +37,7 @@ public class Prefs {
         //put the data
         Gson gson = new Gson();
         String json = gson.toJson(userMoods);
-        editor.putString(historicMoods, json);
+        editor.putString(Constant.historicMoods, json);
         //close the file
         editor.apply();
     }
@@ -44,7 +45,7 @@ public class Prefs {
     //stringToMoods recovers json strings and return there in ArrayList
     public  ArrayList<Moods> stringToMoods() {
         Gson gson = new Gson();
-        String json = prefs.getString(historicMoods, "");
+        String json = prefs.getString(Constant.historicMoods, "");
 
         ArrayList<Moods> userMoods;
 
@@ -68,14 +69,14 @@ public class Prefs {
         //put the data
         Gson gson = new Gson();
         String json = gson.toJson(historicMoods);
-        editor.putString(userhHistoric, json);
+        editor.putString(Constant.userhHistoric, json);
         //close the file
         editor.apply();
     }
     //loadUserMoods recovers json strings and return there in ArrayList,we use it for the history
     public  ArrayList<Moods> loadUserMoods() {
         Gson gson = new Gson();
-        String json = prefs.getString(userhHistoric, "");
+        String json = prefs.getString(Constant.userhHistoric, "");
 
         ArrayList<Moods> historicMoods;
 

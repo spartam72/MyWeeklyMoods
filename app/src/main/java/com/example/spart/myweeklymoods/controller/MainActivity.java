@@ -27,6 +27,7 @@ import com.example.spart.myweeklymoods.model.AlarmReceiver;
 import com.example.spart.myweeklymoods.model.Moods;
 import com.example.spart.myweeklymoods.model.Prefs;
 import com.example.spart.myweeklymoods.model.SaveMoodHelper;
+import com.example.spart.myweeklymoods.tools.Constant;
 import com.example.spart.myweeklymoods.view.MyHistoric;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     Date myDate = new Date();
     SaveMoodHelper mSaveMoodHelper;
     private Prefs prefs;
-    private static final String TAG = "activity_main";
+
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -145,14 +146,14 @@ public class MainActivity extends AppCompatActivity {
             if (manager != null) {
                 manager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + 300, pendingIntent);
             }
-            Log.i(TAG, "startAlarm: 1 ");
+            Log.i(Constant.TAG, "startAlarm: 1 ");
         }
 
         else {
             if (manager != null) {
                 manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + 300, pendingIntent);
             }
-            Log.i(TAG, "startAlarm: 2");
+            Log.i(Constant.TAG, "startAlarm: 2");
         }
     }
 
