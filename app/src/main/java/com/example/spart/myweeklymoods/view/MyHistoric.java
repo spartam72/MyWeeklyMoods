@@ -72,130 +72,92 @@ public class MyHistoric extends AppCompatActivity {
         textView6 = findViewById( R.id.textView6 );
         textView7 = findViewById( R.id.textView7 );
 
-        //method called
-        adjustHistoricMood();
-        imageButtonVisibility( imageButton1);
-        imageButtonVisibility( imageButton2);
-        imageButtonVisibility( imageButton3);
-        imageButtonVisibility( imageButton4);
-        imageButtonVisibility( imageButton5);
-        imageButtonVisibility( imageButton6);
-        imageButtonVisibility( imageButton7);
-
-
+        //methods called
+        displayHistory( linearLayout1, imageButton1, textView1, userPrefs.size() - 1 );
+        displayHistory( linearLayout2, imageButton2, textView2, userPrefs.size() - 2 );
+        displayHistory( linearLayout3, imageButton3, textView3, userPrefs.size() - 3 );
+        displayHistory( linearLayout4, imageButton4, textView4, userPrefs.size() - 4 );
+        displayHistory( linearLayout5, imageButton5, textView5, userPrefs.size() - 5 );
+        displayHistory( linearLayout6, imageButton6, textView6, userPrefs.size() - 6 );
+        displayHistory( linearLayout7, imageButton7, textView7, userPrefs.size() - 7 );
+        imageButtonVisibility();
     }
-    //method to change linearLayout and imageButton color and widht
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public  void adjustHistoricMood() {
 
+    //method to change linearLayout's color and widht and shows comment if it exits
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public void displayHistory(LinearLayout linearLayout, ImageButton imageButton, TextView textView, final int position) {
         if (userPrefs == null) {
             userPrefs = new ArrayList<>();
         }
-        switch (userPrefs.size()) {
-            case 1:
-                displayBackgroundAndComment( linearLayout1, imageButton1, textView1, 0 );
-                break;
-            case 2:
-                displayBackgroundAndComment( linearLayout1, imageButton1, textView1, 1 );
-                displayBackgroundAndComment( linearLayout2, imageButton2, textView2, 0 );
-                break;
-            case 3:
-                displayBackgroundAndComment( linearLayout1, imageButton1, textView1, 2 );
-                displayBackgroundAndComment( linearLayout2, imageButton2, textView2, 1 );
-                displayBackgroundAndComment( linearLayout3, imageButton3, textView3, 0 );
-                break;
-            case 4:
-                displayBackgroundAndComment( linearLayout1, imageButton1, textView1, 3 );
-                displayBackgroundAndComment( linearLayout2, imageButton2, textView2, 2 );
-                displayBackgroundAndComment( linearLayout3, imageButton3, textView3, 1 );
-                displayBackgroundAndComment( linearLayout4, imageButton4, textView4, 0 );
-                break;
-            case 5:
-                displayBackgroundAndComment( linearLayout1, imageButton1, textView1, 4 );
-                displayBackgroundAndComment( linearLayout2, imageButton2, textView2, 3 );
-                displayBackgroundAndComment( linearLayout3, imageButton3, textView3, 2 );
-                displayBackgroundAndComment( linearLayout4, imageButton4, textView4, 1 );
-                displayBackgroundAndComment( linearLayout5, imageButton5, textView5, 0 );
-                break;
-            case 6:
-                displayBackgroundAndComment( linearLayout1, imageButton1, textView1, 5 );
-                displayBackgroundAndComment( linearLayout2, imageButton2, textView2, 4 );
-                displayBackgroundAndComment( linearLayout3, imageButton3, textView3, 3 );
-                displayBackgroundAndComment( linearLayout4, imageButton4, textView4, 2 );
-                displayBackgroundAndComment( linearLayout5, imageButton5, textView5, 1 );
-                displayBackgroundAndComment( linearLayout6, imageButton6, textView6, 0 );
-                break;
-            case 7:
-                displayBackgroundAndComment( linearLayout1, imageButton1, textView1, 6 );
-                displayBackgroundAndComment( linearLayout2, imageButton2, textView2, 5 );
-                displayBackgroundAndComment( linearLayout3, imageButton3, textView3, 4 );
-                displayBackgroundAndComment( linearLayout4, imageButton4, textView4, 3 );
-                displayBackgroundAndComment( linearLayout5, imageButton5, textView5, 2 );
-                displayBackgroundAndComment( linearLayout6, imageButton6, textView6, 1 );
-                displayBackgroundAndComment( linearLayout7, imageButton7, textView7, 0 );
-                break;
-        }
-    }
-    //this method manages the color and size of the linearLayout but also what to do if the user has written a comment or not
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    private  void displayBackgroundAndComment(LinearLayout linearLayout, ImageButton imageButton, TextView textView, final int position) {
-        //if data is present, the color of the saved mood is displayed
-        if ((!userPrefs.isEmpty()) && (userPrefs.size() > position)) {
+        if ((!userPrefs.isEmpty()) && (userPrefs.size() > position) && (position >= 0)) {
             linearLayout.setBackground( getResources().getDrawable( userPrefs.get( position ).getBackground() ) );
             imageButton.setBackground( getResources().getDrawable( userPrefs.get( position ).getBackground() ) );
             textView.setBackground( getResources().getDrawable( userPrefs.get( position ).getBackground() ) );
-            Display display = getWindowManager().getDefaultDisplay();
-            int width = 0;
-            //we adjust the size of the linearlayout according to the mood, the more joyful it is, the bigger it is
-            if ((!userPrefs.isEmpty()) && (userPrefs.size() > position)) {
-                switch (userPrefs.get( position ).getNumber()) {
-                    case (4):
-                        width = (display.getWidth());
-                        break;
-                    case 3:
-                        width = (int) (display.getWidth() * 0.8);
-                        break;
-                    case 2:
-                        width = (int) (display.getWidth() * 0.6);
-                        break;
-                    case 1:
-                        width = (int) (display.getWidth() * 0.4);
-                        break;
-                    case 0:
-                        width = (int) (display.getWidth() * 0.2);
-                        break;
-                }
-                LinearLayout.LayoutParams parms = (LinearLayout.LayoutParams) linearLayout.getLayoutParams();
-                parms.width = width;
-                linearLayout.setLayoutParams( parms );
-                linearLayout.setVisibility( View.VISIBLE );
-            }
-            //if a comment has been recorded when choosing the mood, an icon is displayed that allows the user to reread what he/she has written, by clicking on it
-            imageButton.setOnClickListener( new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String comment = userPrefs.get( position ).getComment();
-                    if (userPrefs.get( position ).getComment() != null) {
-                        Toast.makeText( getApplicationContext(), comment, Toast.LENGTH_LONG ).show();
-                    }
-                }
-            } );
-            String comment = userPrefs.get( position ).getComment();
-            //if the comment does not contain any text, hide the icon ,otherwise it will be displayed.
-            if (comment != null) {
-
-                if (userPrefs.get( position ).getComment().equals( "" ))
-                    imageButton.setVisibility( View.INVISIBLE );
-            }else{
-                imageButton.setVisibility( View.INVISIBLE );
-            }
+            linearLayoutWidht( linearLayout, position );
+            imageButtonListener( imageButton, position );
         }
     }
-    //this method allows to hide all the imageButtons of linearLayouts that do not contain mood
-    public void imageButtonVisibility(ImageButton imageButton){
+    //allows you to calculate the size of the linearLayout according to the mood
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    private void linearLayoutWidht(LinearLayout linearLayout, final int position) {
+
+        Display display = getWindowManager().getDefaultDisplay();
+        int width = 0;
+        if ((!userPrefs.isEmpty()) && (userPrefs.size() > position)) {
+            switch (userPrefs.get( position ).getNumber()) {
+                case (4):
+                    width = (display.getWidth());
+                    break;
+                case 3:
+                    width = (int) (display.getWidth() * 0.8);
+                    break;
+                case 2:
+                    width = (int) (display.getWidth() * 0.6);
+                    break;
+                case 1:
+                    width = (int) (display.getWidth() * 0.4);
+                    break;
+                case 0:
+                    width = (int) (display.getWidth() * 0.2);
+                    break;
+            }
+            LinearLayout.LayoutParams parms = (LinearLayout.LayoutParams) linearLayout.getLayoutParams();
+            parms.width = width;
+            linearLayout.setLayoutParams( parms );
+            linearLayout.setVisibility( View.VISIBLE );
+        }
+    }
+    //allows to read a comment or hide imageButton if there is no comment
+    public void imageButtonListener(final ImageButton imageButton, final int position) {
+        imageButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String comment = userPrefs.get( position ).getComment();
+                if (userPrefs.get( position ).getComment() != null){
+                    imageButton.setVisibility( View.VISIBLE );
+                    Toast.makeText( getApplicationContext(), comment, Toast.LENGTH_LONG ).show();
+                }
+            }
+        } );
+        String comment = userPrefs.get( position ).getComment();
+        //if the comment does not contain any text, hide the icon ,otherwise it will be displayed.
+        if (comment != null) {
+
+            if (userPrefs.get( position ).getComment().equals( "" ))
+                imageButton.setVisibility( View.INVISIBLE );
+        }
+    }
+    //hide imageButton according to userPrefs.size
+    public void imageButtonVisibility(){
         switch (userPrefs.size()){
             case 0:
-                imageButton.setVisibility( View.INVISIBLE );
+                imageButton1.setVisibility( View.INVISIBLE );
+                imageButton2.setVisibility( View.INVISIBLE );
+                imageButton3.setVisibility( View.INVISIBLE );
+                imageButton4.setVisibility( View.INVISIBLE );
+                imageButton5.setVisibility( View.INVISIBLE );
+                imageButton6.setVisibility( View.INVISIBLE );
+                imageButton7.setVisibility( View.INVISIBLE );
                 break;
             case 1:
                 imageButton2.setVisibility( View.INVISIBLE );
@@ -230,9 +192,9 @@ public class MyHistoric extends AppCompatActivity {
             case 6:imageButton7.setVisibility( View.INVISIBLE );
                 break;
         }
-
     }
 }
+
 
 
 
