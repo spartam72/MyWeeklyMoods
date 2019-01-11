@@ -8,9 +8,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -51,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     @SuppressLint("ClickableViewAccessibility")
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -121,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //At midnight, the alarm goes off to save the last mood of the day
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void AlarmMidnight() {
 
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -142,19 +138,13 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(MainActivity.this, AlarmReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, myIntent, 0);
 
-        if (Build.VERSION.SDK_INT > 19) {
+
             if (manager != null) {
                 manager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + 300, pendingIntent);
             }
             Log.i(Constant.TAG, "startAlarm: 1 ");
-        }
 
-        else {
-            if (manager != null) {
-                manager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis() + 300, pendingIntent);
-            }
-            Log.i(Constant.TAG, "startAlarm: 2");
-        }
+
     }
 
     //creation of my customized dialog box
@@ -204,7 +194,6 @@ public class MainActivity extends AppCompatActivity {
     //creation of a Arraylist to store the differents moods
     private ArrayList<Moods> moodTab;
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void createMoodsTab() {
 
         Moods mood1 = new Moods( R.drawable.very_happy_mood, R.color.colorYellow,4,comment,myDate,R.raw.riddlesms );
@@ -221,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
         moodTab.add( mood5 );
     }
     //According to its position in the arraylist, the image and color as well as the sound corresponding to the mood are displayed.
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void displayDifferentsMoods (){
         if ((indice >= 0) && (indice < moodTab.size())) {
             happy_mood.setImageDrawable( getResources().getDrawable( moodTab.get(indice).getImage() ) );
@@ -256,7 +244,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() { super.onPause(); }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onStop() { super.onStop(); }
 
@@ -307,7 +294,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //this method is the Swipe that will manage the display when going from top to bottom or bottom to top
-        @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @Override
         public boolean onFling(MotionEvent start, MotionEvent finish, float xVelocity, float yVelocity) {
             if (start.getRawY() < finish.getRawY()) {

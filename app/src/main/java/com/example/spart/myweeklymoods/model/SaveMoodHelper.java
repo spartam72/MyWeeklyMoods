@@ -1,11 +1,7 @@
 package com.example.spart.myweeklymoods.model;
 
 import android.content.Context;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-
 import com.example.spart.myweeklymoods.R;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,7 +50,6 @@ public class SaveMoodHelper {
     }
 
     //method called by AlarmMidnight to save current mood
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void SaveMoodMidnight() {
 
         Prefs prefs = Prefs.get(context);

@@ -1,8 +1,6 @@
 package com.example.spart.myweeklymoods.view;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
@@ -43,7 +41,7 @@ public class MyHistoric extends AppCompatActivity {
      ArrayList<Moods> userPrefs = Prefs.get( this ).loadUserMoods();
 
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -84,7 +82,6 @@ public class MyHistoric extends AppCompatActivity {
     }
 
     //method to change linearLayout's color and widht and shows comment if it exits
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void displayHistory(LinearLayout linearLayout, ImageButton imageButton, TextView textView, final int position) {
         if (userPrefs == null) {
             userPrefs = new ArrayList<>();
@@ -98,7 +95,6 @@ public class MyHistoric extends AppCompatActivity {
         }
     }
     //allows you to calculate the size of the linearLayout according to the mood
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private void linearLayoutWidht(LinearLayout linearLayout, final int position) {
 
         Display display = getWindowManager().getDefaultDisplay();
